@@ -28,32 +28,22 @@ def extract_date(s):
 	return date.day, date.month, date.year
 
 def is_date(s):
-
-
+	
 	if s[2] == '/' or s[2] == '.' or s[2] == '-':
 		d = int(s[0:2])
-		#print(d)
 		if d >= 1 and d <= 31:
 			m = int(s[3:5])
-			#print(m)
 			if m >= 1 and m <= 12:
 				y = int(s[6:])
 				if y >= 1:
 					return True
 	return False
-	"""
-	except:
-		return False
-	"""
-def is_noticehead(s):
 
-	pass
 #Data structures
 headers = []
 dates = []
 pdfs = []
 
-#Regular expressions
 notice_header = "ct100_ContentPlaceHolder1_Repeater3_"
 
 url = 'http://www.heritageit.edu/'
@@ -63,7 +53,6 @@ soup = BeautifulSoup(response.text, "lxml")
 s = soup.find("div", {"id" : "notice"})
 
 data = clean_up(s)
-#print(data)
 
 #Writing to file
 f = open('notice.txt', 'w')
